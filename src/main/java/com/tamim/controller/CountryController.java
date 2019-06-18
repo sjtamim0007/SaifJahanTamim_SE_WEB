@@ -2,9 +2,12 @@ package com.tamim.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -46,7 +49,11 @@ public class CountryController {
 	}
 	
 	@PostMapping("/saveCountry")
-	public String saveCustomer(@ModelAttribute("country") Country theCountry) {
+	public String saveCustomer(@Valid@ModelAttribute("country") Country theCountry,BindingResult bindingResult) {
+		
+		if (bindingResult.hasErrors()) {
+			return "country-form";
+		}
 		
 		// save the country using our service
 		countryService.saveCountry(theCountry);	

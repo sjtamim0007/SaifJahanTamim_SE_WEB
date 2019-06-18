@@ -23,8 +23,8 @@ public class Country {
 	private int id;
 	
 	//country_name data field
-	@NotNull(message="is required")
-	@Size(min=1, message="is required")
+	@NotNull(message="Country field can not be empty")
+	@Size(min=1, message="Country field can not be empty")
 	@Column(name="country_name")
 	private String country;
 
