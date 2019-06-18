@@ -13,7 +13,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "country")
+@Table(name="country")
 public class Country {
 	
 	//primary key
